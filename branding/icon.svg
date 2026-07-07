@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="T3dmium">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2b6cb0"/>
+      <stop offset="1" stop-color="#1a365d"/>
+    </linearGradient>
+    <linearGradient id="shield" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#cbd5e0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Rounded app-icon background -->
+  <rect x="16" y="16" width="480" height="480" rx="108" fill="url(#bg)"/>
+
+  <!-- Privacy shield -->
+  <path d="M256 96 L392 148 V268 C392 348 332 400 256 428 C180 400 120 348 120 268 V148 Z"
+        fill="url(#shield)"/>
+
+  <!-- Orbit ring: the 'browser' inside the shield of privacy -->
+  <ellipse cx="256" cy="262" rx="104" ry="44" fill="none" stroke="#2b6cb0" stroke-width="16"/>
+
+  <!-- Wordmark 'T3d' -->
+  <text x="256" y="292" text-anchor="middle"
+        font-family="Helvetica, Arial, sans-serif" font-weight="700"
+        font-size="120" fill="#1a365d">T3d</text>
+</svg>
