@@ -114,3 +114,7 @@ degoogle/extra/ungoogled-chromium/disable-ai-search-shortcuts.patch
 degoogle/extra/ungoogled-chromium/disable-fedcm-by-default.patch
 degoogle/extra/ungoogled-chromium/bundle-hyphenation-patterns.patch
 degoogle/extra/ungoogled-chromium/add-flag-for-disabling-jit.patch
+
+# privacy/: T3dmium privacy-first default flips (Phase 3), authored by
+# Ted Roubour. Applied after the adopted degoogle set.
+privacy/enable-do-not-track-by-default.patch

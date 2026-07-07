@@ -54,7 +54,7 @@ implementation status. Statuses are updated as work lands.
 | Baked-in Google API keys | None. All Google API keys are removed from the build. | Removed (Phase 0 build flags + Phase 1 patches) |
 | Default search engine | DuckDuckGo, or the user's choice at first run. Never Google by default. | Google removed (Phase 1); DuckDuckGo default and first-run choice in Phase 3 |
 | WebRTC IP handling | Non-leaking default: local IP addresses are not exposed to sites via WebRTC unless the user changes the setting. | Non-leaking default (Phase 1) |
-| Do Not Track + Global Privacy Control | Both ON by default. | Planned (Phase 3) |
+| Do Not Track + Global Privacy Control | Both ON by default. A single pref (`kEnableDoNotTrack`) drives both the `DNT: 1` and `Sec-GPC: 1` headers. | ON by default (Phase 3) |
 | Referrer trimming | Cross-site referrers are trimmed. | Control flags adopted (Phase 1); trimming defaults in Phase 3 |
 | Third-party cookie blocking | ON by default. | Planned (Phase 3) |
 | Partitioned storage | Third-party storage is partitioned by top-level site. | Planned (Phase 3) |
