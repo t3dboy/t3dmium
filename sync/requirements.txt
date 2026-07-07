@@ -1,0 +1,23 @@
+# T3dmium sync — dependencies
+#
+# The reference SERVER, CLIENT, and TEST SUITE require NO third-party packages.
+# They run on the Python 3.9+ standard library alone (http.server, sqlite3,
+# hashlib, hmac, secrets, base64, json, unittest). There is intentionally
+# nothing to `pip install` to run or test what ships here.
+#
+# ---------------------------------------------------------------------------
+# RECOMMENDED for PRODUCTION clients (optional, not used by the reference):
+# ---------------------------------------------------------------------------
+# A production T3dmium client should replace the stdlib-only reference AEAD
+# (SHA-256-CTR + HMAC-SHA256) and the PBKDF2 KDF with audited primitives:
+#
+#   * AES-256-GCM or XChaCha20-Poly1305  (authenticated encryption)
+#   * Argon2id                           (memory-hard passphrase KDF)
+#
+# both of which the `cryptography` package provides. Uncomment to install:
+#
+# cryptography>=42.0
+#
+# The wire protocol is cipher-agnostic (see PROTOCOL.md §2.1), so swapping in
+# these primitives requires no server change — only a different `alg`/`kdf`
+# label in records and the pairing payload.

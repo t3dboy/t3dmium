@@ -1,0 +1,34 @@
+# T3dmium sync server — self-hosted deployment.
+#
+# TLS is the operator's responsibility. This publishes the plain-HTTP port only
+# on the host loopback (127.0.0.1); put your own TLS-terminating reverse proxy
+# (Caddy / nginx / Traefik) in front for any remote access. Never publish this
+# port on 0.0.0.0 to the open internet.
+
+services:
+  t3dmium-sync:
+    build: .
+    container_name: t3dmium-sync
+    restart: unless-stopped
+    # Host-side bind is 127.0.0.1 ONLY. Change the left-hand side to your
+    # proxy's upstream address if the proxy runs elsewhere on the host network.
+    ports:
+      - "127.0.0.1:8787:8787"
+    volumes:
+      # Persist the encrypted SQLite blob store across restarts/upgrades.
+      - t3dmium_sync_data:/data
+    # The server holds only ciphertext; still, drop privileges and capabilities.
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    healthcheck:
+      test: ["CMD", "python3", "-c",
+             "import urllib.request,sys; sys.exit(0) if urllib.request.urlopen('http://127.0.0.1:8787/v1/health').read() else sys.exit(1)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  t3dmium_sync_data:
