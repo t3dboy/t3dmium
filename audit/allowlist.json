@@ -37,6 +37,13 @@
         "host": "*.duckduckgo.com",
         "reason": "Subresources of the scripted DuckDuckGo search served from its subdomains (e.g. links.duckduckgo.com)."
       }
+    ],
+    "adblock_update": [
+      {
+        "host": "raw.githubusercontent.com",
+        "path_prefix": "/easylist/easylist",
+        "reason": "User-initiated only: the driver clicks 'Update filter lists' in settings, which fetches the pinned EasyList/EasyPrivacy snapshot. No background updater exists; this request fires solely on that click."
+      }
     ]
   }
 }

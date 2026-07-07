@@ -44,7 +44,7 @@ def cmd_check(_args):
         print("[{}] HTTP {}  {}  {}".format(
             name, status, human_size(size) if size else "size unknown",
             item["url"]))
-        if size:
+        if size and item.get("type", "archive") != "file":
             needed = size * (1 + EXTRACTION_MULTIPLIER) + BUILD_HEADROOM_BYTES
             free = shutil.disk_usage(BUILD_DIR.parent).free
             print("      projected need (download + extract + build): ~{}; "
@@ -94,19 +94,26 @@ def _strip_members(archive, strip):
 
 def cmd_unpack(_args):
     for name, item in read_downloads_ini().items():
-        archive_path = DOWNLOAD_CACHE / item["download_filename"]
-        if not archive_path.exists():
-            die("[{}] archive missing; run `fetch.py retrieve` first".format(
+        cached = DOWNLOAD_CACHE / item["download_filename"]
+        if not cached.exists():
+            die("[{}] download missing; run `fetch.py retrieve` first".format(
                 name))
-        if _sha256(archive_path) != item["sha256"]:
-            die("[{}] archive failed sha256 verification; delete {} and "
-                "re-run retrieve".format(name, archive_path))
+        if _sha256(cached) != item["sha256"]:
+            die("[{}] download failed sha256 verification; delete {} and "
+                "re-run retrieve".format(name, cached))
         destination = BUILD_DIR / item["output_path"]
+        # A "file" entry (e.g. a filter list) is copied verbatim; the default
+        # "archive" entry is extracted.
+        if item.get("type", "archive") == "file":
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(cached, destination)
+            print("[{}] copied -> {}".format(name, destination))
+            continue
         destination.mkdir(parents=True, exist_ok=True)
         strip = int(item.get("strip_leading_dirs", 0))
         print("[{}] extracting {} -> {}".format(
-            name, archive_path.name, destination))
-        with tarfile.open(archive_path) as archive:
+            name, cached.name, destination))
+        with tarfile.open(cached) as archive:
             archive.extractall(destination, members=_strip_members(
                 archive, strip) if strip else None)
         print("[{}] done".format(name))

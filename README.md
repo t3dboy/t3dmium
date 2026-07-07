@@ -72,9 +72,28 @@ walkthroughs for macOS and Windows.
 | `domain_substitution.list`, `domain_regex.list` | Domain substitution rules |
 | `tools/` | Python tooling: fetch, patch, build, validate |
 | `audit/` | mitmproxy-based network audit harness (runs in CI) |
+| `sync/` | Optional self-hosted, zero-knowledge encrypted sync server |
+| `branding/` | Icon source and generator; user-agent policy |
 | `platforms/macos/`, `platforms/windows/` | Platform packaging: signing/notarisation, NSIS installer |
+| `docs/adr/` | Architecture decision records |
 | `chromium_version.txt` | Pinned Chromium version |
 | `.github/workflows/` | CI: PR checks and release builds |
+
+## Development status by area
+
+Everything except the compiled binary is verifiable without a build host;
+those parts are validated in CI on every change. The final compile is gated
+only by hardware (see [BUILDING.md](BUILDING.md)).
+
+| Area | Status | Verified by |
+| --- | --- | --- |
+| De-Google patch set (109 patches) | Applies cleanly to the pin | `tools/validate_patches.py` in CI |
+| Network audit harness | Detection logic tested | `audit/tests` (self-test) in CI |
+| Privacy defaults | DNT + GPC patch validated | `tools/validate_patches.py` |
+| Ad/tracker blocking | Engine decided, lists pinned | ADR-0005; `fetch.py check` |
+| Branding + installers | Assets + packaging scripts | script review |
+| Self-hosted sync | Server + tests passing | `sync/tests` (live round-trip) in CI |
+| Compiled browser + signed release | Needs ~100 GB disk + Xcode / self-hosted runner | build host |
 
 ## Contributing
 

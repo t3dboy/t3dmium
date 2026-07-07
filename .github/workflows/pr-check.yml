@@ -40,3 +40,6 @@ jobs:
 
       - name: Audit harness self-test (detection logic, no browser)
         run: python -m unittest discover -s audit/tests -v
+
+      - name: Sync server test suite
+        run: python -m unittest discover -s sync/tests -v

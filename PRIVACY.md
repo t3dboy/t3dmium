@@ -58,6 +58,8 @@ implementation status. Statuses are updated as work lands.
 | Referrer trimming | Cross-site referrers are trimmed. | Control flags adopted (Phase 1); trimming defaults in Phase 3 |
 | Third-party cookie blocking | ON by default. | Planned (Phase 3) |
 | Partitioned storage | Third-party storage is partitioned by top-level site. | Planned (Phase 3) |
+| Ad / tracker blocking | Built in, driven by EasyList/EasyPrivacy via an adblock-rust component (ADR-0005). Filter lists are pinned in-release and updated only when the user clicks "Update filter lists" — never in the background. | Engine deferred to a build host; list pinning + audit scenario landed (Phase 4) |
+| Local Safe Browsing blocklist | Optional, fully local URL/hash blocklist as a replacement for Google Safe Browsing pings. OFF by default, explained in the UI; nothing leaves the machine when on. | Planned (Phase 4, needs build) |
 
 ## User-agent policy
 
