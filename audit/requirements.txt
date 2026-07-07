@@ -1,0 +1,12 @@
+# Needed ONLY for live capture against a built browser binary
+# (audit.py / capture.py / the page-interaction scenarios in
+# scenarios/driver.py). The detection engine (checker.py) and the
+# self-test (tests/) are pure standard library and must keep running
+# on Python 3.9 with none of these installed.
+#
+#   python3 -m pip install -r audit/requirements.txt
+#
+# No `playwright install` step is required: the audit attaches to the
+# audited binary over CDP instead of downloading Playwright's browsers.
+mitmproxy>=10.0
+playwright>=1.40

@@ -1,0 +1,54 @@
+{
+  "comment": "Recorded-style flows from a well-behaved run: only traffic explained by scripted user actions. idle, settings, bookmarks and history produced zero requests, so they contribute no flows.",
+  "flows": [
+    {
+      "url": "https://example.com/",
+      "method": "GET",
+      "host": "example.com",
+      "timestamp": 1751900130.412,
+      "scenario": "navigation"
+    },
+    {
+      "url": "https://example.com/favicon.ico",
+      "method": "GET",
+      "host": "example.com",
+      "timestamp": 1751900130.988,
+      "scenario": "navigation"
+    },
+    {
+      "url": "https://example.com/",
+      "method": "GET",
+      "host": "example.com",
+      "timestamp": 1751900410.207,
+      "scenario": "downloads"
+    },
+    {
+      "url": "https://example.com/index.html",
+      "method": "GET",
+      "host": "example.com",
+      "timestamp": 1751900414.551,
+      "scenario": "downloads"
+    },
+    {
+      "url": "https://duckduckgo.com/?q=t3dmium+privacy+browser",
+      "method": "GET",
+      "host": "duckduckgo.com",
+      "timestamp": 1751900520.033,
+      "scenario": "search"
+    },
+    {
+      "url": "https://duckduckgo.com/dist/lib/l.5c1c9e7d.css",
+      "method": "GET",
+      "host": "duckduckgo.com",
+      "timestamp": 1751900520.611,
+      "scenario": "search"
+    },
+    {
+      "url": "https://links.duckduckgo.com/d.js?q=t3dmium+privacy+browser",
+      "method": "GET",
+      "host": "links.duckduckgo.com",
+      "timestamp": 1751900521.294,
+      "scenario": "search"
+    }
+  ]
+}

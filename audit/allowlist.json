@@ -1,0 +1,42 @@
+{
+  "comment": [
+    "T3dmium network audit allowlist. Default deny: a request is allowed",
+    "only if a rule under its own scenario matches its host (and optional",
+    "path prefix). An empty list means the browser must be completely",
+    "silent during that scenario. '*.host' matches subdomains only, never",
+    "the apex and never suffix lookalikes. Every rule must carry a",
+    "'reason' explaining which scripted user action generates the traffic."
+  ],
+  "scenarios": {
+    "idle": [],
+    "settings": [],
+    "bookmarks": [],
+    "history": [],
+    "navigation": [
+      {
+        "host": "example.com",
+        "reason": "Scripted user action: the driver opens https://example.com/ as if the user typed it into the address bar."
+      },
+      {
+        "host": "*.example.com",
+        "reason": "Subresources of the scripted example.com navigation served from its subdomains (e.g. www.example.com)."
+      }
+    ],
+    "downloads": [
+      {
+        "host": "example.com",
+        "reason": "Scripted user action: the driver opens https://example.com/ and clicks a same-origin download link; the page fetch and the file fetch both target example.com."
+      }
+    ],
+    "search": [
+      {
+        "host": "duckduckgo.com",
+        "reason": "User-chosen search engine: the driver submits a query to DuckDuckGo on the user's behalf."
+      },
+      {
+        "host": "*.duckduckgo.com",
+        "reason": "Subresources of the scripted DuckDuckGo search served from its subdomains (e.g. links.duckduckgo.com)."
+      }
+    ]
+  }
+}

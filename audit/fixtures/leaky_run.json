@@ -1,0 +1,89 @@
+{
+  "comment": "Same run as clean_run.json plus five realistic leaks a stock Chromium build would produce: a component-update ping and a variations (field-trial) seed fetch while the browser sat idle, a Safe Browsing list update during navigation, a crash-report upload while the user was in settings, and a suffix-lookalike host during search that a naive glob would wrongly excuse. The checker must flag all five.",
+  "flows": [
+    {
+      "url": "https://update.googleapis.com/service/update2/json?cup2key=13:1751900047",
+      "method": "POST",
+      "host": "update.googleapis.com",
+      "timestamp": 1751900047.882,
+      "scenario": "idle"
+    },
+    {
+      "url": "https://clientservices.googlechrome.com/chrome-variations/seed?osname=mac&channel=stable",
+      "method": "GET",
+      "host": "clientservices.googlechrome.com",
+      "timestamp": 1751900063.117,
+      "scenario": "idle"
+    },
+    {
+      "url": "https://example.com/",
+      "method": "GET",
+      "host": "example.com",
+      "timestamp": 1751900130.412,
+      "scenario": "navigation"
+    },
+    {
+      "url": "https://example.com/favicon.ico",
+      "method": "GET",
+      "host": "example.com",
+      "timestamp": 1751900130.988,
+      "scenario": "navigation"
+    },
+    {
+      "url": "https://safebrowsing.googleapis.com/v4/threatListUpdates:fetch?$req=ChkKCGNo",
+      "method": "GET",
+      "host": "safebrowsing.googleapis.com",
+      "timestamp": 1751900131.542,
+      "scenario": "navigation"
+    },
+    {
+      "url": "https://clients2.google.com/cr/report",
+      "method": "POST",
+      "host": "clients2.google.com",
+      "timestamp": 1751900301.664,
+      "scenario": "settings"
+    },
+    {
+      "url": "https://example.com/",
+      "method": "GET",
+      "host": "example.com",
+      "timestamp": 1751900410.207,
+      "scenario": "downloads"
+    },
+    {
+      "url": "https://example.com/index.html",
+      "method": "GET",
+      "host": "example.com",
+      "timestamp": 1751900414.551,
+      "scenario": "downloads"
+    },
+    {
+      "url": "https://duckduckgo.com/?q=t3dmium+privacy+browser",
+      "method": "GET",
+      "host": "duckduckgo.com",
+      "timestamp": 1751900520.033,
+      "scenario": "search"
+    },
+    {
+      "url": "https://duckduckgo.com/dist/lib/l.5c1c9e7d.css",
+      "method": "GET",
+      "host": "duckduckgo.com",
+      "timestamp": 1751900520.611,
+      "scenario": "search"
+    },
+    {
+      "url": "https://links.duckduckgo.com/d.js?q=t3dmium+privacy+browser",
+      "method": "GET",
+      "host": "links.duckduckgo.com",
+      "timestamp": 1751900521.294,
+      "scenario": "search"
+    },
+    {
+      "url": "https://evilduckduckgo.com/beacon?uid=8f2a",
+      "method": "GET",
+      "host": "evilduckduckgo.com",
+      "timestamp": 1751900522.09,
+      "scenario": "search"
+    }
+  ]
+}
