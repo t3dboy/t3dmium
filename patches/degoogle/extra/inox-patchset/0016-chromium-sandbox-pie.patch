@@ -1,0 +1,19 @@
+Description: Chromium sandbox pie
+Origin: adapted from the Inox patchset via ungoogled-chromium 150.0.7871.46-1 (patches/extra/inox-patchset/0016-chromium-sandbox-pie.patch)
+--- a/sandbox/linux/BUILD.gn
++++ b/sandbox/linux/BUILD.gn
+@@ -298,6 +298,14 @@ if (is_linux || is_chromeos) {
+       "suid/process_util_linux.c",
+       "suid/sandbox.c",
+     ]
++
++    cflags = [
++      "-fPIE",
++    ]
++
++    ldflags = [
++      "-pie",
++    ]
+   }
+ }
+ 

@@ -1,0 +1,14 @@
+Description: Disable missing key warning
+Origin: adapted from the Inox patchset via ungoogled-chromium 150.0.7871.46-1 (patches/extra/inox-patchset/0013-disable-missing-key-warning.patch)
+--- a/chrome/browser/ui/startup/google_api_keys_infobar_delegate.cc
++++ b/chrome/browser/ui/startup/google_api_keys_infobar_delegate.cc
+@@ -17,9 +17,6 @@
+ // static
+ void GoogleApiKeysInfoBarDelegate::Create(
+     infobars::ContentInfoBarManager* infobar_manager) {
+-  infobar_manager->AddInfoBar(
+-      CreateConfirmInfoBar(std::unique_ptr<ConfirmInfoBarDelegate>(
+-          new GoogleApiKeysInfoBarDelegate())));
+ }
+ 
+ GoogleApiKeysInfoBarDelegate::GoogleApiKeysInfoBarDelegate() = default;

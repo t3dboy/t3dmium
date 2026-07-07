@@ -1,0 +1,18 @@
+Description: Google api warning
+Origin: adapted from Debian's chromium packaging via ungoogled-chromium 150.0.7871.46-1 (patches/extra/debian/disable/google-api-warning.patch)
+description: disable the google api key warning when those aren't found
+author: Michael Gilbert <mgilbert@debian.org>
+
+--- a/chrome/browser/ui/startup/infobar_utils.cc
++++ b/chrome/browser/ui/startup/infobar_utils.cc
+@@ -185,10 +185,6 @@ void AddInfoBarsIfNecessary(BrowserWindo
+   infobars::ContentInfoBarManager* infobar_manager =
+       infobars::ContentInfoBarManager::FromWebContents(web_contents);
+ 
+-  if (!google_apis::HasAPIKeyConfigured()) {
+-    GoogleApiKeysInfoBarDelegate::Create(infobar_manager);
+-  }
+-
+   if (ObsoleteSystem::IsObsoleteNowOrSoon()) {
+     PrefService* local_state = g_browser_process->local_state();
+     if (!local_state ||

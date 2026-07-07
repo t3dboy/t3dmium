@@ -30,34 +30,34 @@ do not allow, that is a serious bug. Please report it using the
 
 ## Service-by-service handling
 
-T3dmium is in early development (Phase 0: patch set and tooling). The table
+T3dmium is in early development (Phase 1: de-Google patch set adopted). The table
 below lists every Google or third-party service in Chromium that generates
 network traffic or shapes behaviour, how T3dmium handles it, and the current
 implementation status. Statuses are updated as work lands.
 
 | Service / feature | How T3dmium handles it | Status |
 | --- | --- | --- |
-| Google account sign-in / Chrome Sync / GAIA | Removed entirely. No Google account integration, no sync service, no GAIA endpoints. | Planned (Phase 1) |
-| Safe Browsing pings | Remote Safe Browsing removed. Replaced by an optional, fully **local** blocklist — no URLs or hashes ever leave the machine. OFF by default and clearly explained in the UI. | Planned (Phase 1) |
-| Field trials / Finch / variations | Removed. No experiment configuration is fetched; all users run the same code with the same defaults. | Planned (Phase 1) |
-| Component updater phone-home | Removed. Components (e.g. certificate lists, CRLSets equivalents) ship inside each release rather than being fetched at runtime. | Planned (Phase 1) |
-| Crash reporting (Crashpad uploads) | Upload path removed. Crashes are written locally only; nothing is transmitted. | Planned (Phase 1) |
-| UMA / UKM metrics | Removed. No usage metrics are collected or sent. | Planned (Phase 1) |
-| RLZ | Removed. | Planned (Phase 1) |
-| Rappor | Removed. | Planned (Phase 1) |
-| Omnibox remote search suggestions | OFF by default. If the user enables suggestions, keystrokes go only to the user-chosen search engine, never anywhere else. | Planned (Phase 1) |
-| Network prediction / preconnect / prefetch / DNS prefetch | Conservative defaults; fully user-controllable. Nothing is prefetched from pages you have not chosen to visit without your setting saying so. | Planned (Phase 1) |
-| Translate ranker / translate service | Remote translate service and ranker removed. | Planned (Phase 1) |
-| Spellcheck download service | Removed. Dictionaries are bundled locally with the browser. | Planned (Phase 1) |
-| Promotions / "What's New" / default-browser nags / feed surfaces | Removed. No promotional content is fetched or shown. | Planned (Phase 1) |
-| Push via Google Cloud Messaging | Removed. No GCM/FCM connection is established. | Planned (Phase 1) |
-| Baked-in Google API keys | None. All Google API keys are removed from the build. | Planned (Phase 1) |
-| Default search engine | DuckDuckGo, or the user's choice at first run. Never Google by default. | Planned (Phase 1) |
-| WebRTC IP handling | Non-leaking default: local IP addresses are not exposed to sites via WebRTC unless the user changes the setting. | Planned (Phase 1) |
-| Do Not Track + Global Privacy Control | Both ON by default. | Planned (Phase 1) |
-| Referrer trimming | Cross-site referrers are trimmed. | Planned (Phase 1) |
-| Third-party cookie blocking | ON by default. | Planned (Phase 1) |
-| Partitioned storage | Third-party storage is partitioned by top-level site. | Planned (Phase 1) |
+| Google account sign-in / Chrome Sync / GAIA | Removed entirely. No Google account integration, no sync service, no GAIA endpoints. | Removed (Phase 1) |
+| Safe Browsing pings | Remote Safe Browsing removed. Replaced by an optional, fully **local** blocklist — no URLs or hashes ever leave the machine. OFF by default and clearly explained in the UI. | Removed (Phase 1); optional local blocklist arrives in Phase 4 |
+| Field trials / Finch / variations | Removed. No experiment configuration is fetched; all users run the same code with the same defaults. | Removed (Phase 1) |
+| Component updater phone-home | Removed. Components (e.g. certificate lists, CRLSets equivalents) ship inside each release rather than being fetched at runtime. | Neutralized (Phase 1): auto-update disabled, endpoints domain-substituted; in-release component shipping in Phase 4/5 |
+| Crash reporting (Crashpad uploads) | Upload path removed. Crashes are written locally only; nothing is transmitted. | Removed (Phase 1) |
+| UMA / UKM metrics | Removed. No usage metrics are collected or sent. | Removed (Phase 1) |
+| RLZ | Removed. | Removed (Phase 1) |
+| Rappor | Removed. | Not present in the pinned Chromium (removed upstream) |
+| Omnibox remote search suggestions | OFF by default. If the user enables suggestions, keystrokes go only to the user-chosen search engine, never anywhere else. | Google endpoints removed (Phase 1); T3dmium defaults land in Phase 3 |
+| Network prediction / preconnect / prefetch / DNS prefetch | Conservative defaults; fully user-controllable. Nothing is prefetched from pages you have not chosen to visit without your setting saying so. | Planned (Phase 3) |
+| Translate ranker / translate service | Remote translate service and ranker removed. | Removed (Phase 1) |
+| Spellcheck download service | Removed. Dictionaries are bundled locally with the browser. | Neutralized (Phase 1) by domain substitution; bundled dictionaries in Phase 3 |
+| Promotions / "What's New" / default-browser nags / feed surfaces | Removed. No promotional content is fetched or shown. | Removed (Phase 1) |
+| Push via Google Cloud Messaging | Removed. No GCM/FCM connection is established. | Removed (Phase 1) |
+| Baked-in Google API keys | None. All Google API keys are removed from the build. | Removed (Phase 0 build flags + Phase 1 patches) |
+| Default search engine | DuckDuckGo, or the user's choice at first run. Never Google by default. | Google removed (Phase 1); DuckDuckGo default and first-run choice in Phase 3 |
+| WebRTC IP handling | Non-leaking default: local IP addresses are not exposed to sites via WebRTC unless the user changes the setting. | Non-leaking default (Phase 1) |
+| Do Not Track + Global Privacy Control | Both ON by default. | Planned (Phase 3) |
+| Referrer trimming | Cross-site referrers are trimmed. | Control flags adopted (Phase 1); trimming defaults in Phase 3 |
+| Third-party cookie blocking | ON by default. | Planned (Phase 3) |
+| Partitioned storage | Third-party storage is partitioned by top-level site. | Planned (Phase 3) |
 
 ## User-agent policy
 
