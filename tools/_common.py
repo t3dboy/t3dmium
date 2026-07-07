@@ -63,6 +63,19 @@ def die(message, code=1):
     raise SystemExit(code)
 
 
+def free_bytes_for(path):
+    """Free bytes on the filesystem that holds `path`, resolving symlinks and
+    walking up to the nearest existing ancestor. Correct even when build/ is a
+    symlink to another volume (e.g. an external drive)."""
+    import shutil
+    probe = Path(path).resolve()
+    while not probe.exists():
+        if probe.parent == probe:
+            break
+        probe = probe.parent
+    return shutil.disk_usage(probe).free
+
+
 def human_size(num_bytes):
     value = float(num_bytes)
     for unit in ("B", "KiB", "MiB", "GiB", "TiB"):

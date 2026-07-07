@@ -20,7 +20,8 @@ import shutil
 import subprocess
 import sys
 
-from _common import BUILD_DIR, ROOT, SOURCE_TREE, die, human_size
+from _common import (BUILD_DIR, ROOT, SOURCE_TREE, die, free_bytes_for,
+                     human_size)
 
 DEPOT_TOOLS_URL = "https://chromium.googlesource.com/chromium/tools/depot_tools.git"
 DEFAULT_TARGETS = ["chrome", "chromedriver"]
@@ -30,10 +31,11 @@ def check_environment():
     if not SOURCE_TREE.is_dir():
         die("no source tree at {}; run fetch.py retrieve && fetch.py unpack "
             "first".format(SOURCE_TREE))
-    free = shutil.disk_usage(ROOT).free
+    free = free_bytes_for(BUILD_DIR)
     if free < 60 * 1024 ** 3:
-        print("WARNING: only {} free; a Chromium build typically needs far "
-              "more. See BUILDING.md.".format(human_size(free)))
+        print("WARNING: only {} free on the build volume; a Chromium build "
+              "typically needs far more. See BUILDING.md.".format(
+                  human_size(free)))
     if platform.system() == "Darwin":
         developer_dir = subprocess.run(["xcode-select", "-p"],
                                        capture_output=True, text=True)

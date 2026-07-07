@@ -16,8 +16,8 @@ import sys
 import tarfile
 import urllib.request
 
-from _common import (BUILD_DIR, DOWNLOAD_CACHE, die, human_size,
-                     read_downloads_ini)
+from _common import (BUILD_DIR, DOWNLOAD_CACHE, die, free_bytes_for,
+                     human_size, read_downloads_ini)
 
 # A Chromium source tarball expands to roughly ten times its compressed size,
 # and a build adds tens of GB on top. Used for the honest warning in `check`.
@@ -46,7 +46,7 @@ def cmd_check(_args):
             item["url"]))
         if size and item.get("type", "archive") != "file":
             needed = size * (1 + EXTRACTION_MULTIPLIER) + BUILD_HEADROOM_BYTES
-            free = shutil.disk_usage(BUILD_DIR.parent).free
+            free = free_bytes_for(BUILD_DIR)
             print("      projected need (download + extract + build): ~{}; "
                   "free disk: {}".format(human_size(needed), human_size(free)))
             if free < needed:
