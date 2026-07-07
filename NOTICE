@@ -1,0 +1,33 @@
+T3dmium — third-party notices and attributions
+==============================================
+
+T3dmium is a patch set and build tooling around the Chromium open-source
+browser. It stands on the work of the projects below; their licenses apply to
+the material adopted from them.
+
+ungoogled-chromium
+------------------
+Portions of this project — including patches under patches/degoogle/, the
+pruning and domain-substitution list mechanism (pruning.list,
+domain_substitution.list, domain_regex.list), GN flags in flags.gn, and the
+overall fetch/prune/patch/substitute build sequence — are adopted from or
+modelled on ungoogled-chromium.
+
+  Copyright (c) 2015-2026, The ungoogled-chromium Authors
+  License: BSD 3-Clause
+  https://github.com/ungoogled-software/ungoogled-chromium
+
+Chromium
+--------
+The browser produced by this project is built from the Chromium source code.
+
+  Copyright 2015 The Chromium Authors
+  License: BSD 3-Clause
+  https://chromium.googlesource.com/chromium/src/
+
+Prior art studied
+-----------------
+Brave (MPL-2.0) and Cromite/Bromite (GPL-3.0) informed several design
+decisions; where code or patches from these projects are adopted in later
+phases, their licenses and attributions will be added here and in the
+affected files.

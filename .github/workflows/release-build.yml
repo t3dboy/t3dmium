@@ -1,0 +1,57 @@
+# Full browser builds for tagged releases.
+#
+# HONESTY NOTE: a full Chromium build needs ~8 hours and ~100 GB of disk,
+# which exceeds what free GitHub-hosted runners provide reliably. This
+# workflow is written for self-hosted runners (labels: self-hosted + macos /
+# windows). To use GitHub-hosted runners anyway, change `runs-on` and expect
+# timeouts; see BUILDING.md ("Continuous integration").
+name: release-build
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+jobs:
+  build-macos-arm64:
+    runs-on: [self-hosted, macOS, ARM64]
+    timeout-minutes: 720
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch pinned Chromium source
+        run: |
+          python3 tools/fetch.py retrieve
+          python3 tools/fetch.py unpack
+      - name: Apply patch series
+        run: python3 tools/apply_patches.py apply
+      - name: Build
+        run: python3 tools/build.py
+      - name: Package (ad-hoc signed DMG)
+        run: platforms/macos/create_dmg.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: t3dmium-macos-arm64
+          path: build/T3dmium-*.dmg
+          if-no-files-found: error
+
+  build-windows-x64:
+    runs-on: [self-hosted, Windows, X64]
+    timeout-minutes: 720
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch pinned Chromium source
+        run: |
+          python tools/fetch.py retrieve
+          python tools/fetch.py unpack
+      - name: Apply patch series
+        run: python tools/apply_patches.py apply
+      - name: Build
+        run: python tools/build.py
+      - name: Package installer
+        run: platforms/windows/build.ps1 -Package
+        shell: pwsh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: t3dmium-windows-x64
+          path: build/T3dmium-*-setup.exe
+          if-no-files-found: error

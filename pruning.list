@@ -1,0 +1,6 @@
+# Binary files to delete from the unpacked Chromium tree before building.
+# One path per line, relative to build/src. Lines starting with # are ignored.
+#
+# Placeholder: populated in Phase 1 by adopting ungoogled-chromium's
+# pruning.list (BSD-3-Clause, The ungoogled-chromium Authors) for the pinned
+# version in chromium_version.txt.

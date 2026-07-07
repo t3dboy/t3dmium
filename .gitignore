@@ -1,0 +1,10 @@
+# Build outputs and fetched sources (never vendored)
+build/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# OS noise
+.DS_Store

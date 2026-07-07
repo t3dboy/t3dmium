@@ -1,0 +1,6 @@
+# Files to run domain substitution over (see domain_regex.list).
+# One path per line, relative to build/src. Lines starting with # are ignored.
+#
+# Placeholder: populated in Phase 1 by adopting ungoogled-chromium's
+# domain_substitution.list (BSD-3-Clause, The ungoogled-chromium Authors)
+# for the pinned version in chromium_version.txt.

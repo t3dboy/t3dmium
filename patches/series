@@ -1,0 +1,10 @@
+# Patch application order (quilt format).
+# One path per line, relative to patches/. Lines starting with # are ignored.
+# Applied by tools/apply_patches.py with GNU patch -p1.
+#
+# Categories:
+#   degoogle/  - removal of Google services and background requests
+#                (adopted from ungoogled-chromium, Phase 1)
+#   privacy/   - T3dmium privacy defaults
+#   branding/  - T3dmium name, icons, about page, UA policy
+#   features/  - settings UI, first run, adblock, local safe browsing, sync

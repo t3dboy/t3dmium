@@ -1,0 +1,6 @@
+# Search#replace regex pairs applied to every file in domain_substitution.list,
+# neutralising Google-owned hostnames in the source tree (replacements end in
+# an invalid TLD so any missed request cannot resolve).
+#
+# Placeholder: populated in Phase 1 by adopting ungoogled-chromium's
+# domain_regex.list (BSD-3-Clause, The ungoogled-chromium Authors).
