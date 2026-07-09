@@ -118,3 +118,4 @@ degoogle/extra/ungoogled-chromium/add-flag-for-disabling-jit.patch
 # privacy/: T3dmium privacy-first default flips (Phase 3), authored by
 # Ted Roubour. Applied after the adopted degoogle set.
 privacy/enable-do-not-track-by-default.patch
+branding/rename-product-to-t3dmium.patch

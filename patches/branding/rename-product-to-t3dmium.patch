@@ -1,0 +1,23 @@
+Description: Rebrand the product from Chromium to T3dmium (name, company, bundle id, copyright). Drives the app name, Dock title, menus, About box, process names, and helper-app names.
+Origin: t3dmium
+--- a/chrome/app/theme/chromium/BRANDING
++++ b/chrome/app/theme/chromium/BRANDING
+@@ -1,10 +1,10 @@
+-COMPANY_FULLNAME=The Chromium Authors
+-COMPANY_SHORTNAME=The Chromium Authors
+-PRODUCT_FULLNAME=Chromium
+-PRODUCT_SHORTNAME=Chromium
+-PRODUCT_INSTALLER_FULLNAME=Chromium Installer
+-PRODUCT_INSTALLER_SHORTNAME=Chromium Installer
+-COPYRIGHT=Copyright @LASTCHANGE_YEAR@ The Chromium Authors. All rights reserved.
+-MAC_BUNDLE_ID=org.chromium.Chromium
++COMPANY_FULLNAME=The T3dmium Authors
++COMPANY_SHORTNAME=T3dmium
++PRODUCT_FULLNAME=T3dmium
++PRODUCT_SHORTNAME=T3dmium
++PRODUCT_INSTALLER_FULLNAME=T3dmium Installer
++PRODUCT_INSTALLER_SHORTNAME=T3dmium Installer
++COPYRIGHT=Copyright @LASTCHANGE_YEAR@ The T3dmium Authors. All rights reserved.
++MAC_BUNDLE_ID=com.t3dmium.T3dmium
+ MAC_CREATOR_CODE=Cr24
+ MAC_TEAM_ID=

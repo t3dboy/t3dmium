@@ -1,5 +1,6 @@
 # Build outputs and fetched sources (never vendored)
 build/
+/build
 
 # Python
 __pycache__/

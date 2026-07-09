@@ -17,11 +17,8 @@
   <path d="M256 96 L392 148 V268 C392 348 332 400 256 428 C180 400 120 348 120 268 V148 Z"
         fill="url(#shield)"/>
 
-  <!-- Orbit ring: the 'browser' inside the shield of privacy -->
-  <ellipse cx="256" cy="262" rx="104" ry="44" fill="none" stroke="#2b6cb0" stroke-width="16"/>
-
   <!-- Wordmark 'T3d' -->
-  <text x="256" y="292" text-anchor="middle"
+  <text x="256" y="300" text-anchor="middle"
         font-family="Helvetica, Arial, sans-serif" font-weight="700"
-        font-size="120" fill="#1a365d">T3d</text>
+        font-size="132" fill="#1a365d">T3d</text>
 </svg>
