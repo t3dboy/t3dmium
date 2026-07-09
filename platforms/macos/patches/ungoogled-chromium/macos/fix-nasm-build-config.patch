@@ -1,0 +1,14 @@
+Description: macOS build fix (fix nasm build config).
+Origin: adopted from ungoogled-chromium-macos 150.0.7871.46-1.1 (patches/ungoogled-chromium/macos/fix-nasm-build-config.patch)
+--- a/third_party/nasm/config/config-mac.h
++++ b/third_party/nasm/config/config-mac.h
+@@ -219,9 +219,6 @@
+    */
+ #define HAVE_DECL_STRSEP 1
+ 
+-/* Define to 1 if you have the <endian.h> header file. */
+-#define HAVE_ENDIAN_H 1
+-
+ /* Define to 1 if you have the 'faccessat' function. */
+ #define HAVE_FACCESSAT 1
+ 

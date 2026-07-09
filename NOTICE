@@ -17,6 +17,16 @@ modelled on ungoogled-chromium.
   License: BSD 3-Clause
   https://github.com/ungoogled-software/ungoogled-chromium
 
+ungoogled-chromium-macos
+------------------------
+The macOS build patches under platforms/macos/patches/ and the macOS GN
+flags in platforms/macos/flags.macos.gn are adopted from the
+ungoogled-chromium-macos project.
+
+  Copyright (c) 2019-2026, The ungoogled-chromium Authors
+  License: BSD 3-Clause
+  https://github.com/ungoogled-software/ungoogled-chromium-macos
+
 Chromium
 --------
 The browser produced by this project is built from the Chromium source code.

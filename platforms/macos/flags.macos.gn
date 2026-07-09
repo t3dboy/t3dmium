@@ -1,0 +1,24 @@
+# macOS build flags, appended to ../../flags.gn by platforms/macos/build.sh.
+# Platform flags adopted from ungoogled-chromium-macos 150.0.7871.46-1.1.
+enable_iterator_debugging=false
+enable_rust=true
+enable_swiftshader=true
+enable_updater=false
+fatal_linker_warnings=false
+is_clang=true
+is_debug=false
+use_sysroot=false
+enable_mse_mpeg2ts_stream_parser=true
+
+# The pinned Chromium's toolchain.gni hardcodes clang_version="22", but the
+# clang that tools/clang/scripts/update.py fetches for this revision is 23.
+clang_version="23"
+
+# Feasibility on constrained hardware (e.g. 16 GB RAM): a non-official build
+# avoids the ThinLTO final-link memory spike (25-40 GB) that would OOM.
+# Fully functional; not size/speed-optimized like a release binary. Set to
+# true (and remove enable_precompiled_headers) on a 32 GB+ build host for an
+# optimized artifact.
+is_official_build=false
+use_thin_lto=false
+enable_precompiled_headers=false

@@ -10,7 +10,10 @@ REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 ARCH="${1:-$(uname -m)}"
 OUT="$REPO_ROOT/build/src/out/Default"
 VERSION="$(cat "$REPO_ROOT/chromium_version.txt")"
-APP_SRC="$OUT/Chromium.app"          # ninja emits the app under its GN name
+# With the branding patch applied, ninja emits T3dmium.app directly; fall
+# back to Chromium.app if building without branding.
+APP_SRC="$OUT/T3dmium.app"
+[ -d "$APP_SRC" ] || APP_SRC="$OUT/Chromium.app"
 APP_NAME="T3dmium.app"
 STAGE="$REPO_ROOT/build/dmg-stage"
 DMG="$REPO_ROOT/build/T3dmium-$VERSION-$ARCH.dmg"
