@@ -10,15 +10,17 @@
     </linearGradient>
   </defs>
 
-  <!-- Rounded app-icon background -->
-  <rect x="16" y="16" width="480" height="480" rx="108" fill="url(#bg)"/>
+  <!-- Full-bleed background: fills the whole canvas so macOS (incl. the
+       macOS 26 icon system) can apply its own rounded-square mask cleanly.
+       No transparent margin, no self-rounding. -->
+  <rect x="0" y="0" width="512" height="512" fill="url(#bg)"/>
 
-  <!-- Privacy shield -->
-  <path d="M256 96 L392 148 V268 C392 348 332 400 256 428 C180 400 120 348 120 268 V148 Z"
+  <!-- Privacy shield, centred within the safe area -->
+  <path d="M256 116 L384 164 V276 C384 348 328 396 256 420 C184 396 128 348 128 276 V164 Z"
         fill="url(#shield)"/>
 
   <!-- Wordmark 'T3d' -->
-  <text x="256" y="300" text-anchor="middle"
+  <text x="256" y="304" text-anchor="middle"
         font-family="Helvetica, Arial, sans-serif" font-weight="700"
-        font-size="132" fill="#1a365d">T3d</text>
+        font-size="124" fill="#1a365d">T3d</text>
 </svg>
